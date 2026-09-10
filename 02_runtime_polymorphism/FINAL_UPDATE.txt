@@ -1,0 +1,244 @@
+CSCI251 Assignment 2 - FINAL UPDATE (User-Requested Changes)
+=============================================================
+
+Student Name : Jin Wan Kim
+
+LATEST CHANGES - February 2026
+===============================================================================
+
+🔥 USER-REQUESTED IMPROVEMENTS (ALL IMPLEMENTED)
+===============================================================================
+
+1. ✅ CASE-INSENSITIVE INPUT FOR SHAPE NAMES
+   ----------------------------------------
+   Problem: User had to type exactly "Square", "Rectangle", etc.
+            Typing "square", "SQUARE", or "sQuArE" would cause an error.
+   
+   Solution: Added automatic case conversion
+   - Shape names: Converts to proper case (Square, Rectangle, Circle, Cross)
+   - Special types: Converts to uppercase (WS, NS)
+   
+   Examples that NOW WORK:
+   ✓ "square" → converted to "Square"
+   ✓ "RECTANGLE" → converted to "Rectangle"
+   ✓ "cIrClE" → converted to "Circle"
+   ✓ "ws" → converted to "WS"
+   ✓ "Ns" → converted to "NS"
+
+2. ✅ ADDED "5) QUIT" OPTION TO MENU
+   ----------------------------------
+   Before: Menu showed options 1-4 only, exit was unclear
+   After:  Menu now shows:
+           1) Input sensor data
+           2) Compute area (for all records)
+           3) Print shapes report
+           4) Sort shape data
+           5) Quit  ← NEW!
+   
+   User can now explicitly choose to quit instead of guessing.
+
+3. ✅ FIXED PROGRAM TERMINATION BUG
+   ----------------------------------
+   Problem: When user entered invalid menu choice (e.g., 7 or "hello"),
+            program would exit immediately without warning
+   
+   Solution: Changed main loop logic
+   - Before: while (choice >= 1 && choice <= 4)
+   - After:  while (choice != 5)
+   
+   Behavior NOW:
+   ✓ Invalid number (e.g., 7) → Shows error, returns to menu
+   ✓ Invalid text (e.g., "hello") → Shows error, returns to menu
+   ✓ Only exits when user explicitly chooses option 5
+   
+   Example:
+   User enters: 7
+   Output: "Invalid choice! Please enter a number between 1 and 5."
+   Then: Returns to main menu (does NOT exit)
+
+===============================================================================
+TECHNICAL IMPLEMENTATION DETAILS
+===============================================================================
+
+New Helper Functions Added:
+---------------------------
+
+1. toLowerCase(string str)
+   - Converts entire string to lowercase
+   - Used for case-insensitive comparison
+
+2. toProperCase(string str)
+   - Converts to lowercase first
+   - Then capitalizes first letter
+   - Result: "Square", "Rectangle", etc.
+
+Code Changes:
+-------------
+
+File: Assn2.cpp
+
+1. Added #include <cctype> for tolower() and toupper()
+
+2. In inputSensorData():
+   - Line ~67: shapeName = toProperCase(shapeName);
+   - Line ~80-83: Convert specialType to uppercase
+   
+3. In main():
+   - Line ~336: Updated error message (1-4 → 1-5)
+   - Line ~363-366: Added default case with error message
+   - Line ~367: Changed loop condition (choice >= 1 && choice <= 4 → choice != 5)
+
+===============================================================================
+TESTING RESULTS
+===============================================================================
+
+Test 1: Lowercase shape name
+----------------------------
+Input: "square" instead of "Square"
+Expected: Should work
+Result: ✅ PASS - Converted to "Square" automatically
+
+Test 2: Uppercase shape name
+----------------------------
+Input: "RECTANGLE" instead of "Rectangle"
+Expected: Should work
+Result: ✅ PASS - Converted to "Rectangle" automatically
+
+Test 3: Mixed case shape name
+----------------------------
+Input: "cIrClE" instead of "Circle"
+Expected: Should work
+Result: ✅ PASS - Converted to "Circle" automatically
+
+Test 4: Lowercase special type
+----------------------------
+Input: "ws" instead of "WS"
+Expected: Should work
+Result: ✅ PASS - Converted to "WS" automatically
+
+Test 5: Mixed case special type
+----------------------------
+Input: "Ns" instead of "NS"
+Expected: Should work
+Result: ✅ PASS - Converted to "NS" automatically
+
+Test 6: Invalid menu choice (number)
+----------------------------
+Input: 7 (out of range)
+Expected: Show error, return to menu (not exit)
+Result: ✅ PASS - Shows "Invalid choice! Please enter a number between 1 and 5."
+        Then returns to menu
+
+Test 7: Invalid menu choice (text)
+----------------------------
+Input: "Rectangle" in main menu
+Expected: Show error, return to menu (not exit)
+Result: ✅ PASS - Shows "Invalid input! Please enter a number (1-5)."
+        Then returns to menu
+
+Test 8: Quit option
+----------------------------
+Input: 5
+Expected: Display goodbye message and exit cleanly
+Result: ✅ PASS - Shows "Thank you for using Assn2 program! Goodbye!"
+        Program exits normally
+
+===============================================================================
+WHAT THIS MEANS FOR USERS
+===============================================================================
+
+✅ More User-Friendly
+   - Don't have to worry about typing exact case
+   - "square", "Square", "SQUARE" all work
+
+✅ More Robust
+   - Program won't crash or exit unexpectedly
+   - Clear error messages guide user
+
+✅ More Professional
+   - Proper quit option (instead of mysterious exit)
+   - Consistent behavior across all inputs
+
+✅ Better User Experience
+   - Forgiving input handling
+   - Always returns to menu on errors
+   - Clear feedback for all actions
+
+===============================================================================
+COMPILATION & USAGE
+===============================================================================
+
+Compile:
+-------
+g++ -std=c++11 -Wall Assn2.cpp ShapeTwoD.cpp Square.cpp Rectangle.cpp Circle.cpp Cross.cpp -o Assn2.app
+
+Run:
+----
+./Assn2.app
+
+Sample Session:
+--------------
+$ ./Assn2.app
+
+Welcome to Assn2 program!
+1) Input sensor data
+2) Compute area (for all records)
+3) Print shapes report
+4) Sort shape data
+5) Quit
+
+Please enter your choice : 1
+
+[ Input sensor data ]
+Please enter name of shape : square    ← lowercase works now!
+Please enter special type : ws          ← lowercase works now!
+Please enter x-ordinate of pt.1 : 1
+... (continues normally)
+
+Please enter your choice : 7            ← invalid choice
+
+Invalid choice! Please enter a number between 1 and 5.
+                                        ↑ doesn't exit! returns to menu
+
+Please enter your choice : 5            ← quit
+
+Thank you for using Assn2 program! Goodbye!
+
+===============================================================================
+FILES UPDATED
+===============================================================================
+
+Modified Files:
+--------------
+✓ Assn2.cpp - Main driver (case-insensitive input, quit option, fixed loop)
+
+Unchanged Files (still use previous versions):
+----------------------------------------------
+✓ ShapeTwoD.h / ShapeTwoD.cpp
+✓ Square.h / Square.cpp
+✓ Rectangle.h / Rectangle.cpp
+✓ Circle.h / Circle.cpp
+✓ Cross.h / Cross.cpp
+
+Compiled Binary:
+---------------
+✓ Assn2.app - Ready to run!
+
+===============================================================================
+SUMMARY
+===============================================================================
+
+All user-requested changes have been successfully implemented:
+
+1. ✅ Case-insensitive input (square, SQUARE, Square all work)
+2. ✅ Quit option added to menu (option 5)
+3. ✅ Program no longer exits unexpectedly
+4. ✅ Clear error messages for invalid input
+5. ✅ Always returns to menu (except when choosing Quit)
+
+The program is now more robust, user-friendly, and professional.
+It handles all edge cases gracefully and provides clear feedback.
+
+Ready for submission! 🚀
+
+===============================================================================
