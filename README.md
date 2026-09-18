@@ -2,6 +2,10 @@
 
 Three individual CSCI 251 assignments at UOW (SIM Singapore). The sequence covers file parsing, virtual dispatch and function templates. These are different coursework problems that illustrate related design choices, not a controlled comparison of two implementations of the same system.
 
+## Tech stack
+
+![C++11](https://img.shields.io/badge/C%2B%2B11-00599C?style=flat&logo=cplusplus&logoColor=white) ![Make](https://img.shields.io/badge/Make-555555?style=flat)
+
 ## Projects
 
 | Folder | Task | Design |
