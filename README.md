@@ -1,6 +1,6 @@
 # C++ — runtime and compile-time polymorphism
 
-Three individual CSCI 251 assignments at UOW (SIM Singapore). The sequence covers file parsing, virtual dispatch and function templates. These are different coursework problems that illustrate related design choices, not a controlled comparison of two implementations of the same system.
+Three individual C++ assignments at UOW (SIM Singapore). The sequence covers file parsing, virtual dispatch and function templates. These are different coursework problems that illustrate related design choices, not a controlled comparison of two implementations of the same system.
 
 ## Tech stack
 
@@ -34,6 +34,6 @@ The third Makefile's `test` target depends on an instructor-supplied harness tha
 
 ## Contribution and limits
 
-These were individual assignments. Source files and Makefiles retain the submitted implementations, apart from previously removed student ID/header details. The cross-project comparison and corrected technical explanations in this README are later portfolio documentation.
+These were individual assignments. Source files and Makefiles retain the submitted implementations, apart from previously removed student ID/header details. The cross-project comparison and updated technical explanations in this README are later portfolio documentation.
 
 `Cross` assumes a rectilinear polygon: its boundary check only handles horizontal/vertical edges, and containment uses integer arithmetic. It should not be treated as a general polygon library. The shape program uses owning raw pointers; input validation and ownership could be made more robust. Several headers use `using namespace std`, which exposes names to includers. Those are useful follow-up design improvements, but this repository keeps the scope of the coursework implementation.

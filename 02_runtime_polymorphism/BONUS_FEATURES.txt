@@ -3,7 +3,6 @@ BONUS FEATURES DOCUMENTATION - FOR EXTRA MARKS
 ===============================================================================
 
 Student Name : Jin Wan Kim
-Course Code  : CSCI251
 Assignment   : 2
 
 ===============================================================================

@@ -1,6 +1,5 @@
 /*
  * Student Name : Jin Wan Kim
- * Course Code  : CSCI251
  * Assignment   : 2
  * Filename     : Cross.cpp
  * 

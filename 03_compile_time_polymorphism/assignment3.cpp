@@ -1,5 +1,5 @@
-// csci251_a3.cpp
-// CSCI251 Assignment 3 - Advanced Programming
+// assignment3.cpp
+// Assignment 3
 // 
 // Program: Data Processing with Templates, Operator Overloading, and STL
 // 

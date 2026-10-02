@@ -1,14 +1,14 @@
-# Makefile for CSCI251 Assignment 3
+# Makefile for Assignment 3
 # Author: Jin Wan Kim
 # Date: February 2026
 
 # Compiler settings
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra
-TARGET = csci251_a3.app
+TARGET = assignment3.app
 
 # Source files
-SOURCES = Point2D.cpp Point3D.cpp Line2D.cpp Line3D.cpp csci251_a3.cpp
+SOURCES = Point2D.cpp Point3D.cpp Line2D.cpp Line3D.cpp assignment3.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Header files
@@ -46,7 +46,7 @@ rebuild: clean all
 
 # Show help
 help:
-	@echo "CSCI251 Assignment 3 - Makefile Commands"
+	@echo "Assignment 3 - Makefile Commands"
 	@echo "========================================"
 	@echo "make          - Build the program"
 	@echo "make all      - Build the program"
